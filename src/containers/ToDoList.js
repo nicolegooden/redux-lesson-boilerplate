@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import TodoCard from '../components/TodoCard'
+import { showAll, showActive, showCompleted } from '../actions/index'
 
-const ToDoList = ({todos, showCompleteToDo}) => {
+const ToDoList = ({todos, showAll, showActive, showCompleted}) => {
   const allTodos = todos.map(todo => {
     return (
       <TodoCard 
@@ -12,8 +13,14 @@ const ToDoList = ({todos, showCompleteToDo}) => {
       />
     )
   })
+  //how can I change what is being mapped with the onClick?
   return (
-    <section>{allTodos}</section>
+    <section>
+      <button onClick={() => showAll()}>Show All</button>
+      <button onClick={() => showActive()}>Show Active</button>
+      <button onClick={() => showCompleted()}>Show Completed</button>
+      {allTodos}
+    </section>
   )
 }
 
@@ -21,4 +28,11 @@ const mapStateToProps = state => ({
   todos: state.todos
 });
 
-export default connect(mapStateToProps)(ToDoList);
+const mapDispatchToProps = dispatch => ({
+  showAll: () => dispatch( showAll() ),
+  showActive: () => dispatch( showActive() ),
+  showCompleted: () => dispatch( showCompleted() )
+})
+  
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoList);
+
