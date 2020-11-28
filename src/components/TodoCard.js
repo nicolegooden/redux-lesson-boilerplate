@@ -1,12 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { completeToDo } from '../actions/index';
 
-const TodoCard = ({id, todo, completed}) => {
+const TodoCard = ({id, todo, completed, showCompleteToDo}) => {
   return (
     <article>
-      <h1>{todo}</h1>
-      <h2>{completed || 'not yet completed'}</h2>
+      <h1 onClick={() => showCompleteToDo(id, todo)}>{todo}</h1>
     </article>
   )
 }
 
-export default TodoCard;
+
+const mapDispatchToProps = dispatch => ({
+  completeToDo: (id, todo) => dispatch( completeToDo(id, todo) )
+})
+
+export default connect(null, mapDispatchToProps)(TodoCard);
