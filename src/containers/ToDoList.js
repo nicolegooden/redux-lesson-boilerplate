@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TodoCard } from '../components/TodoCard'
+import TodoCard from '../components/TodoCard'
 
 const ToDoList = ({todos}) => {
   const allTodos = todos.map(todo => {
