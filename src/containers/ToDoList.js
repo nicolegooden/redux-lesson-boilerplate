@@ -9,7 +9,6 @@ const ToDoList = ({todos, showCompleteToDo}) => {
         id={todo.id}
         todo={todo.todo}
         completed={todo.completed}
-        showCompleteToDo={showCompleteToDo}
       />
     )
   })
