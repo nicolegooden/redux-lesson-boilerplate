@@ -3,7 +3,8 @@ export const addToDo = todo => ({
   todo
 });
 
-export const completeToDo = id => ({
+export const completeToDo = (id, todo) => ({
   type: 'COMPLETE_TODO',
-  id
+  id,
+  todo
 });
