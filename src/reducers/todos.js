@@ -9,6 +9,18 @@ export const todos = (state = [], action) => {
         }
         return todo;
       })
+    case 'SHOW_ALL':
+      return state;
+      //do I need this case here since it is 
+      //the same as default?
+    case 'SHOW_ACTIVE':
+      return state.map(todo => {
+        return !todo.completed;
+      });
+    case 'SHOW_COMPLETED':
+      return state.map(todo => {
+        return todo.completed;
+      })
     default:
       return state;
   }
